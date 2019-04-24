@@ -15,6 +15,7 @@ package com.codecool.thehistory;
  * Why is it good? Because if a class implements an interface we can use polymorphism to access the class' instance
  * through any of the interface it implements. That's what we are using in the TestTheHistory.java to avoid duplicate
  * test case implementations.
+ *
  */
 
 public interface TheHistory {
