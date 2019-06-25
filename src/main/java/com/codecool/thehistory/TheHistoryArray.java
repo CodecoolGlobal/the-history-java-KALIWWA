@@ -1,6 +1,7 @@
 package com.codecool.thehistory;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TheHistoryArray implements TheHistory {
 
@@ -11,28 +12,53 @@ public class TheHistoryArray implements TheHistory {
 
     @Override
     public void add(String text) {
-        //TODO: check the TheHistory interface for more information
+        String[] tempArray = text.trim().split("\\s+");
+        wordsArray = tempArray.clone();
+        System.arraycopy(tempArray, 0, wordsArray, 0, tempArray.length);
+
+
+        //TODO: Splits the incoming text to words and adds the words to the container of the
+        //      implementing class
     }
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO: check the TheHistory interface for more information
+        List<String> tempList = new ArrayList<>();
+        for (String s : wordsArray) {
+            if (!s.equals(wordToBeRemoved)) {
+                tempList.add(s);
+            }
+        }
+        wordsArray = tempList.toArray(new String[0]);
     }
 
     @Override
     public int size() {
-        //TODO: check the TheHistory interface for more information
-        return 0;
+        int counter = 0;
+        for (String s : wordsArray) {
+            counter++;
+        }
+        return counter;
     }
 
     @Override
     public void clear() {
-        //TODO: check the TheHistory interface for more information
+        for (int i = 0; i < wordsArray.length; i++) {
+            wordsArray[i] = "";
+        }
     }
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO: check the TheHistory interface for more information
+        List<String> tempList = new ArrayList<>();
+        for (String s : wordsArray) {
+            if (!s.equals(from)) {
+                tempList.add(s);
+            } else {
+                tempList.add(to);
+            }
+        }
+        wordsArray = tempList.toArray(new String[0]);
     }
 
     @Override

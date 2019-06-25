@@ -1,9 +1,6 @@
 package com.codecool.thehistory;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class TheHistoryArrayList implements TheHistory {
     /**
@@ -13,33 +10,64 @@ public class TheHistoryArrayList implements TheHistory {
 
     @Override
     public void add(String text) {
-        //TODO: check the TheHistory interface for more information
+        String[] tempWordsArrayList = text.trim().split("\\s+");
+        Collections.addAll(wordsArrayList, tempWordsArrayList);
     }
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        //TODO: check the TheHistory interface for more information
+        List<String> temp = new ArrayList<>();
+        for (String word : wordsArrayList) {
+            if (!word.equals(wordToBeRemoved)) {
+                temp.add(word);
+            }
+        }
+        wordsArrayList = temp;
     }
 
     @Override
     public int size() {
-        //TODO: check the TheHistory interface for more information
-        return 0;
+        int counter = 0;
+        for (String word : wordsArrayList) {
+            counter++;
+        }
+        return counter;
     }
 
     @Override
     public void clear() {
-        //TODO: check the TheHistory interface for more information
+        Iterator<String> iterator = wordsArrayList.iterator();
+
+        while (iterator.hasNext()) {
+            iterator.next();
+            iterator.remove();
+        }
     }
 
     @Override
     public void replaceOneWord(String from, String to) {
-        //TODO: check the TheHistory interface for more information
+        List<String> temp = new ArrayList<>();
+        for (String word : wordsArrayList) {
+            if (!word.equals(from)) {
+                temp.add(word);
+            } else {
+                temp.add(to);
+            }
+        }
+        wordsArrayList = temp;
     }
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO: check the TheHistory interface for more information
+        List<String> temp = new ArrayList<>();
+        int fromWordsLength = fromWords.length;
+        Iterator<String> iterator = wordsArrayList.iterator();
+        boolean forward = true;
+        while (iterator.hasNext()) {
+            if (iterator.next().equals(fromWords[0])) {
+                // what next?
+            }
+        }
     }
 
     @Override
