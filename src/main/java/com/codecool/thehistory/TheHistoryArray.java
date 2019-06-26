@@ -33,7 +33,7 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public int size() {
         int counter = 0;
-        for (String s : wordsArray) {
+        for (String ignored : wordsArray) {
             counter++;
         }
         return counter;
@@ -42,6 +42,7 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void clear() {
         wordsArray = new String[0];
+        /*empty strings != empty Array | can't use Iterator on Array*/
 //        for (int i = 0; i < wordsArray.length; i++) {
 //            wordsArray[i] = "";
 //        }
@@ -62,16 +63,7 @@ public class TheHistoryArray implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-//        String fromWordsString = String.join(" ", fromWords);
-//        String toWordsString = String.join(" ", toWords);
-//
-//        String regex = "\\b" + fromWordsString + "\\b";
-//        String wordArrayAsString =
-//                String
-//                        .join(" ", wordsArray)
-//                        .replaceAll(regex, toWordsString);
-//
-//        wordsArray = wordArrayAsString.split(" ");
+
     }
 
     @Override

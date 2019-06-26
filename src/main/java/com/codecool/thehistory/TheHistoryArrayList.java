@@ -28,7 +28,7 @@ public class TheHistoryArrayList implements TheHistory {
     @Override
     public int size() {
         int counter = 0;
-        for (String word : wordsArrayList) {
+        for (String ignore : wordsArrayList) {
             counter++;
         }
         return counter;

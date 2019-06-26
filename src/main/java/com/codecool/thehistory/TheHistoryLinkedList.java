@@ -16,13 +16,13 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        wordsLinkedList.removeIf(s -> s.equals(wordToBeRemoved));
+        wordsLinkedList.removeIf(word -> word.equals(wordToBeRemoved));
     }
 
     @Override
     public int size() {
         int counter = 0;
-        for (String s : wordsLinkedList) {
+        for (String ignored : wordsLinkedList) {
             counter++;
         }
         return counter;
@@ -49,16 +49,16 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        List<String> tempArrayList = new ArrayList<>();
-        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
-        List<String> toWordsArrayList = new ArrayList<>(Arrays.asList(toWords));
-        ListIterator<String> wordsListIterator = wordsLinkedList.listIterator();
-        ListIterator<String> fromWordsListIterator = fromWordsArrayList.listIterator();
-        int iterNumber = 0;
-        String lastDiffWord = null;
-        String nextDiffWord = null;
-
-        boolean forward = true;
+//        List<String> tempArrayList = new ArrayList<>();
+//        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
+//        List<String> toWordsArrayList = new ArrayList<>(Arrays.asList(toWords));
+//        ListIterator<String> wordsListIterator = wordsLinkedList.listIterator();
+//        ListIterator<String> fromWordsListIterator = fromWordsArrayList.listIterator();
+//        int iterNumber = 0;
+//        String lastDiffWord = null;
+//        String nextDiffWord = null;
+//
+//        boolean forward = true;
 //        while (wordsListIterator.hasNext()) {
 //            if (wordsListIterator.next().equals(fromWordsArrayList.get(0))) {
 //                lastDiffWord = wordsListIterator.previous();
