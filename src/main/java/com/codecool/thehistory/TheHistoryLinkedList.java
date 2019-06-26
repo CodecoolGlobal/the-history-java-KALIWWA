@@ -42,15 +42,43 @@ public class TheHistoryLinkedList implements TheHistory {
         ListIterator<String> listIterator = wordsLinkedList.listIterator();
         while (listIterator.hasNext()) {
             if (listIterator.next().equals(from)) {
-                listIterator.remove();
-                listIterator.add(to);
+                listIterator.set(to);
             }
         }
     }
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO: check the TheHistory interface for more information
+        List<String> tempArrayList = new ArrayList<>();
+        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
+        List<String> toWordsArrayList = new ArrayList<>(Arrays.asList(toWords));
+        ListIterator<String> wordsListIterator = wordsLinkedList.listIterator();
+        ListIterator<String> fromWordsListIterator = fromWordsArrayList.listIterator();
+        int iterNumber = 0;
+        String lastDiffWord = null;
+        String nextDiffWord = null;
+
+        boolean forward = true;
+//        while (wordsListIterator.hasNext()) {
+//            if (wordsListIterator.next().equals(fromWordsArrayList.get(0))) {
+//                lastDiffWord = wordsListIterator.previous();
+//                while (fromWordsListIterator.hasNext()) {
+//                    iterNumber++;
+//                    if (!wordsListIterator.next().equals(fromWordsListIterator.next())) {
+//
+//                        forward = false;
+//                        for (int i = 0; i < iterNumber; i++) {
+//                            wordsListIterator.previous();
+//                        }
+//                        wordsListIterator.next().equals(toWordsArrayList.get(0));
+//                        forward = true;
+//                        for (int i = 0; i < toWordsArrayList.size() - 1; i++) {
+//                            wordsListIterator.next();
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 
     @Override

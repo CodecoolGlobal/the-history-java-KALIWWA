@@ -1,7 +1,9 @@
 package com.codecool.thehistory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class TheHistoryArray implements TheHistory {
 
@@ -13,12 +15,8 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void add(String text) {
         String[] tempArray = text.trim().split("\\s+");
-        wordsArray = tempArray.clone();
-        System.arraycopy(tempArray, 0, wordsArray, 0, tempArray.length);
-
-
-        //TODO: Splits the incoming text to words and adds the words to the container of the
-        //      implementing class
+        wordsArray = Stream.concat(Arrays.stream(wordsArray), Arrays.stream(tempArray))
+                .toArray(String[]::new);
     }
 
     @Override
@@ -43,9 +41,10 @@ public class TheHistoryArray implements TheHistory {
 
     @Override
     public void clear() {
-        for (int i = 0; i < wordsArray.length; i++) {
-            wordsArray[i] = "";
-        }
+        wordsArray = new String[0];
+//        for (int i = 0; i < wordsArray.length; i++) {
+//            wordsArray[i] = "";
+//        }
     }
 
     @Override
@@ -63,7 +62,16 @@ public class TheHistoryArray implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        //TODO: check the TheHistory interface for more information
+//        String fromWordsString = String.join(" ", fromWords);
+//        String toWordsString = String.join(" ", toWords);
+//
+//        String regex = "\\b" + fromWordsString + "\\b";
+//        String wordArrayAsString =
+//                String
+//                        .join(" ", wordsArray)
+//                        .replaceAll(regex, toWordsString);
+//
+//        wordsArray = wordArrayAsString.split(" ");
     }
 
     @Override
