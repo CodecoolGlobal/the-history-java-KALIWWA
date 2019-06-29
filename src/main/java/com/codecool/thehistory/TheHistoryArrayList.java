@@ -10,8 +10,10 @@ public class TheHistoryArrayList implements TheHistory {
 
     @Override
     public void add(String text) {
-        String[] tempWordsArrayList = text.trim().split("\\s+");
-        Collections.addAll(wordsArrayList, tempWordsArrayList);
+       List<String> tempWordsArrayList = Arrays.asList(text.trim().split("\\s+"));
+        for (int i = 0; i < tempWordsArrayList.size(); i++) {
+            wordsArrayList.add(tempWordsArrayList.get(i));
+        }
     }
 
     @Override

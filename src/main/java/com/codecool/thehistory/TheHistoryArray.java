@@ -15,8 +15,15 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void add(String text) {
         String[] tempArray = text.trim().split("\\s+");
-        wordsArray = Stream.concat(Arrays.stream(wordsArray), Arrays.stream(tempArray))
-                .toArray(String[]::new);
+        int newArrayLength = wordsArray.length + tempArray.length;
+        String[] concatArray = new String[newArrayLength];
+        for (int i = 0; i < wordsArray.length; i++) {
+            concatArray[i] = wordsArray[i];
+        }
+        for (int i = 0; i < tempArray.length; i++) {
+            concatArray[i + wordsArray.length] = tempArray[i];
+        }
+        wordsArray = concatArray;
     }
 
     @Override
@@ -42,10 +49,6 @@ public class TheHistoryArray implements TheHistory {
     @Override
     public void clear() {
         wordsArray = new String[0];
-        /*empty strings != empty Array | can't use Iterator on Array*/
-//        for (int i = 0; i < wordsArray.length; i++) {
-//            wordsArray[i] = "";
-//        }
     }
 
     @Override

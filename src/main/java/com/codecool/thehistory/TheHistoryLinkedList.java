@@ -10,13 +10,23 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void add(String text) {
-        String[] tempWordsArrayList = text.trim().split("\\s+");
-        wordsLinkedList.addAll(Arrays.asList(tempWordsArrayList));
+        List<String> tempWordsList = Arrays.asList(text.trim().split("\\s+"));
+
+        for (int i = 0; i < tempWordsList.size(); i++) {
+            wordsLinkedList.add(tempWordsList.get(i));
+        }
     }
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        wordsLinkedList.removeIf(word -> word.equals(wordToBeRemoved));
+        List<String> tempList = new LinkedList<>();
+        for (int i = 0; i < wordsLinkedList.size(); i++) {
+            String currentWord = wordsLinkedList.get(i);
+            if (!currentWord.equals(wordToBeRemoved)) {
+                tempList.add(currentWord);
+            }
+        }
+        wordsLinkedList = tempList;
     }
 
     @Override
@@ -49,6 +59,10 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
+        // when 1st match, create new iterator, and using it check fromWords to current,
+// maybe cut new list with matched words
+
+
 //        List<String> tempArrayList = new ArrayList<>();
 //        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
 //        List<String> toWordsArrayList = new ArrayList<>(Arrays.asList(toWords));
