@@ -61,22 +61,7 @@ public class TheHistoryArrayList implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-//        List<String> tempArrayList = new ArrayList<>();
-//        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
-//        ListIterator<String> wordsListIterator = wordsArrayList.listIterator();
-//        ListIterator<String> fromWordsListIterator = fromWordsArrayList.listIterator();
-//
-//        boolean forward = true;
-//        while (wordsListIterator.hasNext()) {
-//            if (wordsListIterator.next().equals(fromWordsArrayList.get(0))) {
-//                String lastDiffWord = wordsListIterator.previous();
-//                while (fromWordsListIterator.hasNext()) {
-//                    if (!wordsListIterator.next().equals(fromWordsListIterator.next())) {
-//                        lastDiffWord
-//                    }
-//                }
-//            }
-//        }
+
     }
 
     @Override

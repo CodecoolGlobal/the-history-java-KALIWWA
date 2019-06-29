@@ -19,14 +19,13 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void removeWord(String wordToBeRemoved) {
-        List<String> tempList = new LinkedList<>();
-        for (int i = 0; i < wordsLinkedList.size(); i++) {
-            String currentWord = wordsLinkedList.get(i);
-            if (!currentWord.equals(wordToBeRemoved)) {
-                tempList.add(currentWord);
+        Iterator<String> iterator = wordsLinkedList.iterator();
+
+        while (iterator.hasNext()) {
+            if (iterator.next().equals(wordToBeRemoved)) {
+                iterator.remove();
             }
         }
-        wordsLinkedList = tempList;
     }
 
     @Override
@@ -63,37 +62,27 @@ public class TheHistoryLinkedList implements TheHistory {
 // maybe cut new list with matched words
 
 
+//        in line 75, at last element on fromWords -> fromWordsListIterator.next() is null
 //        List<String> tempArrayList = new ArrayList<>();
-//        List<String> fromWordsArrayList = new ArrayList<>(Arrays.asList(fromWords));
-//        List<String> toWordsArrayList = new ArrayList<>(Arrays.asList(toWords));
+//        List<String> fromWordsLinkedList = new LinkedList<String>(Arrays.asList(fromWords));
+//        List<String> toWordsLinkedList = new LinkedList<String>(Arrays.asList(toWords));
 //        ListIterator<String> wordsListIterator = wordsLinkedList.listIterator();
-//        ListIterator<String> fromWordsListIterator = fromWordsArrayList.listIterator();
-//        int iterNumber = 0;
-//        String lastDiffWord = null;
-//        String nextDiffWord = null;
+//        ListIterator<String> fromWordsListIterator = fromWordsLinkedList.listIterator();
+//        ListIterator<String> toWordsListIterator = toWordsLinkedList.listIterator();
 //
-//        boolean forward = true;
 //        while (wordsListIterator.hasNext()) {
-//            if (wordsListIterator.next().equals(fromWordsArrayList.get(0))) {
-//                lastDiffWord = wordsListIterator.previous();
+//            ListIterator<String> lastDiffIterator = wordsListIterator;
+//            if (wordsListIterator.next().equals(fromWordsListIterator.next())) {
 //                while (fromWordsListIterator.hasNext()) {
-//                    iterNumber++;
-//                    if (!wordsListIterator.next().equals(fromWordsListIterator.next())) {
-//
-//                        forward = false;
-//                        for (int i = 0; i < iterNumber; i++) {
-//                            wordsListIterator.previous();
-//                        }
-//                        wordsListIterator.next().equals(toWordsArrayList.get(0));
-//                        forward = true;
-//                        for (int i = 0; i < toWordsArrayList.size() - 1; i++) {
-//                            wordsListIterator.next();
-//                        }
+//                    if (fromWordsListIterator.next().isEmpty()) {
+//                        System.out.println("I'm in");
 //                    }
 //                }
 //            }
 //        }
+
     }
+
 
     @Override
     public String toString() {
