@@ -12,8 +12,8 @@ public class TheHistoryLinkedList implements TheHistory {
     public void add(String text) {
         List<String> tempWordsList = Arrays.asList(text.trim().split("\\s+"));
 
-        for (int i = 0; i < tempWordsList.size(); i++) {
-            wordsLinkedList.add(tempWordsList.get(i));
+        for (String word : tempWordsList) {
+            wordsLinkedList.add(word);
         }
     }
 
@@ -58,28 +58,21 @@ public class TheHistoryLinkedList implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
-        // when 1st match, create new iterator, and using it check fromWords to current,
-// maybe cut new list with matched words
+        List<String> stringLinkedList = new LinkedList<>();
+        int currentIndex = 0;
 
-
-//        in line 75, at last element on fromWords -> fromWordsListIterator.next() is null
-//        List<String> tempArrayList = new ArrayList<>();
-//        List<String> fromWordsLinkedList = new LinkedList<String>(Arrays.asList(fromWords));
-//        List<String> toWordsLinkedList = new LinkedList<String>(Arrays.asList(toWords));
-//        ListIterator<String> wordsListIterator = wordsLinkedList.listIterator();
-//        ListIterator<String> fromWordsListIterator = fromWordsLinkedList.listIterator();
-//        ListIterator<String> toWordsListIterator = toWordsLinkedList.listIterator();
-//
-//        while (wordsListIterator.hasNext()) {
-//            ListIterator<String> lastDiffIterator = wordsListIterator;
-//            if (wordsListIterator.next().equals(fromWordsListIterator.next())) {
-//                while (fromWordsListIterator.hasNext()) {
-//                    if (fromWordsListIterator.next().isEmpty()) {
-//                        System.out.println("I'm in");
-//                    }
-//                }
-//            }
-//        }
+        while (currentIndex < wordsLinkedList.size()) {
+            if (currentIndex + fromWords.length <= wordsLinkedList.size()
+                    && Arrays.equals(wordsLinkedList.subList(currentIndex, currentIndex + fromWords.length).toArray(), fromWords)) {
+                stringLinkedList.addAll(Arrays.asList(toWords));
+                currentIndex = currentIndex + fromWords.length;
+            } else {
+                ListIterator iterator = wordsLinkedList.listIterator(currentIndex);
+                stringLinkedList.add((String) iterator.next());
+                currentIndex++;
+            }
+        }
+        wordsLinkedList = stringLinkedList;
 
     }
 

@@ -1,6 +1,9 @@
 package com.codecool.thehistory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class TheHistoryArrayList implements TheHistory {
     /**
@@ -10,9 +13,9 @@ public class TheHistoryArrayList implements TheHistory {
 
     @Override
     public void add(String text) {
-       List<String> tempWordsArrayList = Arrays.asList(text.trim().split("\\s+"));
-        for (int i = 0; i < tempWordsArrayList.size(); i++) {
-            wordsArrayList.add(tempWordsArrayList.get(i));
+        String[] tempWordsArrayList = text.trim().split("\\s+");
+        for (String word : tempWordsArrayList) {
+            wordsArrayList.add(word);
         }
     }
 
@@ -61,7 +64,19 @@ public class TheHistoryArrayList implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
+        List<String> stringArrayList = new ArrayList<>();
 
+        int currentIndex = 0;
+        while (currentIndex < wordsArrayList.size()) {
+            if (currentIndex + fromWords.length <= wordsArrayList.size() && Arrays.equals(fromWords, wordsArrayList.subList(currentIndex, currentIndex + fromWords.length).toArray())) {
+                stringArrayList.addAll(Arrays.asList(toWords));
+                currentIndex = currentIndex + fromWords.length;
+            } else {
+                stringArrayList.add(wordsArrayList.get(currentIndex));
+                currentIndex++;
+            }
+        }
+        wordsArrayList = stringArrayList;
     }
 
     @Override

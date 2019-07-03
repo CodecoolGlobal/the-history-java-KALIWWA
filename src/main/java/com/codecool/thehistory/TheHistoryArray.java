@@ -3,7 +3,6 @@ package com.codecool.thehistory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class TheHistoryArray implements TheHistory {
 
@@ -66,7 +65,30 @@ public class TheHistoryArray implements TheHistory {
 
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
+        int counter = 0;
+        for (int i = 0; i < wordsArray.length; ) {
+            if (Arrays.equals(Arrays.copyOfRange(wordsArray, i, i + fromWords.length), fromWords)) {
+                counter++;
+                i = i + fromWords.length;
+            } else {
+                i++;
+            }
+        }
+        String[] wordsNewArray = new String[wordsArray.length - counter * fromWords.length + counter * toWords.length];
 
+        int i = 0;
+        for (int j = 0; j < wordsArray.length; ) {
+            if (Arrays.equals(Arrays.copyOfRange(wordsArray, j, j + fromWords.length), fromWords)) {
+                System.arraycopy(toWords, 0, wordsNewArray, i, toWords.length);
+                i = i + toWords.length;
+                j = j + fromWords.length;
+            } else {
+                System.arraycopy(wordsArray, j, wordsNewArray, i, 1);
+                i++;
+                j++;
+            }
+        }
+        wordsArray = wordsNewArray;
     }
 
     @Override
